@@ -5,6 +5,7 @@
  */
  function kasVyriausias(giminesMedis) {
     let maxAge = 0;
+    
     giminesMedis.forEach(element => {
         if (element.age > maxAge) {
            maxAge = element.age;
