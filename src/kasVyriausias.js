@@ -1,18 +1,21 @@
 /**
- * Skirta rasti ilgiausiai gimineje isgyvenusi asmeni
+ * Skirta rasti ilgiausiai gimineje isgyvenusi asmeni, naudojamas rekursijos algoritmas
  * @param {Object[]} giminesMedis Gimines medi aprasantis objektas
  * @returns {number} Ilgiausiai gyvenusio asmens amzius
  */
  function kasVyriausias(giminesMedis) {
     let maxAge = 0;
-    
-    giminesMedis.forEach(element => {
-        if (element.age > maxAge) {
-           maxAge = element.age;
-        }
-    });
 
-    // console.log(giminesMedis);
+    for (const {age, children} of giminesMedis) {
+        if (age > maxAge) {
+            maxAge = age;
+        }
+            const rez = kasVyriausias(children);
+            if (rez > maxAge) {
+                maxAge = rez;
+            }
+    }
+    
     return maxAge;
 }
 
